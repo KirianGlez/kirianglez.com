@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          
+
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
@@ -36,3 +36,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/browser
+          force_orphan: true
