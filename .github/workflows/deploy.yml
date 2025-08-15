@@ -6,16 +6,13 @@ on:
       - main  # Cada push a main disparará el workflow
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       # 1. Clonar el repo
@@ -39,14 +36,9 @@ jobs:
         run: ng build --configuration=production --output-path=dist --base-href=/kirianglez.com/
 
       # 5. Deploy a GitHub Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./dist/browser
-      
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/browser
+          force_orphan: true
