@@ -32,8 +32,8 @@ jobs:
         run: npm install
 
       # 4. Build Angular
-      - name: Build Angular
-        run: ng build --configuration=production --output-path=dist --base-href=/kirianglez.com/
+      - name: Build Angular app
+        run: ng build --configuration=production --output-path=dist --base-href=/
 
       # 5. Deploy a GitHub Pages
       - name: Deploy to GitHub Pages
