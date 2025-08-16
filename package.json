@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:flat": "ng build --configuration=production && powershell \"Move-Item dist/browser/* dist/ -Force; Remove-Item dist/browser -Recurse -Force\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:kirianglezcom": "node dist/kirianglezcom/server/server.mjs"

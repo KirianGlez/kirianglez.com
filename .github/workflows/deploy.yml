@@ -36,13 +36,19 @@ jobs:
 
       # 4. Build Angular
       - name: Build Angular app
-        run: ng build --configuration=production --output-path=dist --base-href=/
+        run: ng build --configuration=production --base-href=/
 
-      # 5. Añadir archivo CNAME (para dominio propio)
+      # 5. Move files from browser subdirectory to dist root
+      - name: Move browser files to dist root
+        run: |
+          mv dist/browser/* dist/
+          rm -rf dist/browser
+
+      # 6. Añadir archivo CNAME (para dominio propio)
       - name: Add CNAME file
         run: echo "kirianglez.com" > dist/CNAME
 
-      # 6. Deploy a GitHub Pages
+      # 7. Deploy a GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
