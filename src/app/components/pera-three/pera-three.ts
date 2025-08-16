@@ -17,12 +17,26 @@ export class PeraThree implements OnInit, OnDestroy{
   private cube!: THREE.Object3D;
   private controls!: OrbitControls;
   private animationId!: number;
+  private THREE: any;
+  private OrbitControls: any;
 
-  ngOnInit(): void {
+
+  async ngOnInit(): Promise<void> {
+    await this.loadThreeJS();
     this.initThreeJS();
     this.createScene();
     this.setupControls();
     this.animate();
+  }
+
+    private async loadThreeJS(): Promise<void> {
+    const [THREEModule, OrbitControlsModule] = await Promise.all([
+      import('three'),
+      import('three-stdlib')
+    ]);
+    
+    this.THREE = THREEModule;
+    this.OrbitControls = OrbitControlsModule.OrbitControls;
   }
 
   ngOnDestroy(): void {
