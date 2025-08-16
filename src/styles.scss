@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap';
+
+:root {
+  /* Colores principales */
+  --color-background: #ADEBB3;
+  --color-text: #0D3311;
+  --color-complementary-1: #9EB8A0;
+  --color-complementary-2: #58855C;
+  
+  /* Variables adicionales para diferentes usos */
+  --color-primary: var(--color-complementary-2);
+  --color-secondary: var(--color-complementary-1);
+  --color-accent: var(--color-text);
+
+  --custom-cursor: url('./cursors/cursor.png'), auto;
+}
+
+/* Estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: var(--custom-cursor) !important;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  cursor: var(--custom-cursor) !important;
+}
+
+html, body {
+  height: 100%;
+}
+
+button, a, [role="button"], .clickable {
+  cursor: var(--custom-cursor) !important;
+}
+
+input, textarea, select {
+  cursor: url('./cursors/cursor.png'), text !important;
+}
