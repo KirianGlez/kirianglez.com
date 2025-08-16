@@ -33,7 +33,7 @@ jobs:
 
       # 4. Build Angular
       - name: Build Angular app
-        run: ng build --configuration=production --output-path=dist/browser --base-href=/
+        run: ng build --configuration=production --output-path=dist --base-href=/
 
       # 5. Añadir archivo CNAME (para dominio propio)
       - name: Add CNAME file
@@ -44,5 +44,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/browser
+          publish_dir: ./dist
           force_orphan: true
