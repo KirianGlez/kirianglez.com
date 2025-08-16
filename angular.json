@@ -33,7 +33,8 @@
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
+            "outputMode": "static",
+            "outputPath": "dist",
             "ssr": {
               "entry": "src/server.ts"
             }
